@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antares × KDB Group | Стратегічний план проекту</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0F1117;
+            color: #F0EDE8;
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h1 { font-size: 56px; line-height: 1.2; }
+        h2 { font-size: 40px; line-height: 1.2; }
+        h3 { font-size: 32px; line-height: 1.2; }
+        h4 { font-size: 24px; line-height: 1.2; }
+        p, li { font-size: 16px; line-height: 1.6; }
+        .text-sm { font-size: 14px; line-height: 1.6; }
+        .text-secondary { color: #A8A29E; }
+        .text-muted { color: #6B6560; }
+        .number-font { font-family: 'DM Mono', monospace; }
+        .accent { color: #F5A623; }
+        .success { color: #4ADE80; }
+
+        section {
+            padding: 128px 24px;
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #F5A623, transparent);
+            opacity: 0.3;
+        }
+
+        section:first-child::before {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 96px 16px;
+            }
+            h1 { font-size: 40px; }
+            h2 { font-size: 32px; }
+            h3 { font-size: 24px; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            font-weight: 800;
+            color: rgba(245, 166, 35, 0.08);
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .section-header {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: #A8A29E;
+            max-width: 700px;
+        }
+
+        /* ===== SECTION 1: TAM/SAM/SOM NESTED CIRCLES ===== */
+        .market-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 64px;
+        }
+
+        @media (max-width: 1024px) {
+            .market-section {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        .circles-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            gap: 12px;
+            animation: fadeInScale 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .circle-tam {
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgba(245, 166, 35, 0.3);
+            animation-delay: 0s;
+            top: 0;
+            left: 0;
+        }
+
+        .circle-sam {
+            width: 70%;
+            height: 70%;
+            border: 3px solid rgba(245, 166, 35, 0.5);
+            animation-delay: 0.15s;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .circle-som {
+            width: 40%;
+            height: 40%;
+            border: 3px solid #F5A623;
+            background: rgba(245, 166, 35, 0.08);
+            animation-delay: 0.3s;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .circle-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #F5A623;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .circle-value {
+            font-family: 'DM Mono', monospace;
+            font-size: 18px;
+            font-weight: 600;
+            color: #F0EDE8;
+        }
+
+        .market-descriptions {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .market-description-item {
+            padding: 24px;
+            border-left: 4px solid #F5A623;
+            background-color: rgba(245, 166, 35, 0.04);
+            border-radius: 8px;
+        }
+
+        .market-description-item strong {
+            color: #F5A623;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .market-description-item p {
+            font-size: 14px;
+            color: #A8A29E;
+            line-height: 1.6;
+        }
+
+        .disclaimer {
+            background-color: rgba(245, 166, 35, 0.05);
+            border-left: 4px solid #F5A623;
+            padding: 24px;
+            border-radius: 8px;
+            margin-top: 48px;
+            font-size: 14px;
+            color: #A8A29E;
+        }
+
+        /* ===== SECTION 2: VERTICAL TIMELINE ROADMAP ===== */
+        .journey-timeline {
+            position: relative;
+            margin-top: 64px;
+            padding: 0 40px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #F5A623 0%, #4ADE80 100%);
+            z-index: 0;
+        }
+
+        .timeline-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 40px;
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-step:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-step:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-step:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-step:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-step:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-step:nth-child(6) { animation-delay: 0.6s; }
+
+        .step-node {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .step-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F5A623, #FFC947);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: #0F1117;
+            flex-shrink: 0;
+            box-shadow: 0 8px 24px rgba(245, 166, 35, 0.2);
+            margin-top: 4px;
+        }
+
+        .step-content {
+            padding-top: 8px;
+        }
+
+        .step-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #F0EDE8;
+            margin-bottom: 12px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: #A8A29E;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background-color: rgba(74, 222, 128, 0.15);
+            border: 1px solid #4ADE80;
+            color: #4ADE80;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* ===== SECTION 3: REVENUE STREAMS CARDS ===== */
+        .revenue-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        @media (max-width: 768px) {
+            .revenue-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .revenue-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .revenue-card {
+            background-color: #1A1D27;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .revenue-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #F5A623, #4ADE80);
+        }
+
+        .revenue-card:hover {
+            background-color: #1E222D;
+            border-color: rgba(245, 166, 35, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(245, 166, 35, 0.1);
+        }
+
+        .revenue-product-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #F0EDE8;
+            margin-bottom: 16px;
+        }
+
+        .revenue-badge {
+            display: inline-block;
+            background-color: rgba(245, 166, 35, 0.15);
+            color: #F5A623;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .revenue-price {
+            font-family: 'DM Mono', monospace;
+            font-size: 28px;
+            font-weight: 600;
+            color: #F5A623;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .revenue-bar {
+            width: 100%;
+            height: 8px;
+            background-color: rgba(245, 166, 35, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 16px;
+        }
+
+        .revenue-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #F5A623, #4ADE80);
+            border-radius: 4px;
+        }
+
+        .revenue-card:nth-child(1) .revenue-bar-fill { width: 60%; }
+        .revenue-card:nth-child(2) .revenue-bar-fill { width: 45%; }
+        .revenue-card:nth-child(3) .revenue-bar-fill { width: 35%; }
+        .revenue-card:nth-child(4) .revenue-bar-fill { width: 50%; }
+        .revenue-card:nth-child(5) .revenue-bar-fill { width: 40%; }
+
+        /* ===== LTV CARDS (Unit Economics) ===== */
+        .ltv-section {
+            margin-top: 80px;
+            padding-top: 80px;
+            border-top: 1px solid rgba(245, 166, 35, 0.2);
+        }
+
+        .ltv-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .ltv-subtitle {
+            font-size: 14px;
+            color: #A8A29E;
+            margin-bottom: 48px;
+        }
+
+        .ltv-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 1024px) {
+            .ltv-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ltv-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ltv-card {
+            background-color: #1A1D27;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .ltv-card:hover {
+            border-color: rgba(245, 166, 35, 0.3);
+            background-color: #1E222D;
+            transform: translateY(-4px);
+        }
+
+        .ltv-card-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #F5A623;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .ltv-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #F0EDE8;
+            margin-bottom: 16px;
+        }
+
+        .ltv-card-description {
+            font-size: 13px;
+            color: #A8A29E;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .ltv-calculation {
+            font-size: 13px;
+            color: #A8A29E;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .ltv-total {
+            font-family: 'DM Mono', monospace;
+            font-size: 32px;
+            font-weight: 700;
+            color: #4ADE80;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .ltv-disclaimer {
+            background-color: rgba(245, 166, 35, 0.05);
+            border-left: 4px solid #F5A623;
+            padding: 24px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #A8A29E;
+            line-height: 1.6;
+        }
+
+        /* ===== SECTION 4: 5 DIRECTIONS CONNECTED ===== */
+        .directions-intro {
+            background-color: rgba(245, 166, 35, 0.05);
+            border-left: 4px solid #F5A623;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 64px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #A8A29E;
+        }
+
+        .directions-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            margin-top: 48px;
+        }
+
+        .direction-node {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            position: relative;
+            animation: fadeInLeft 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .direction-node:nth-child(1) { animation-delay: 0s; }
+        .direction-node:nth-child(2) { animation-delay: 0.1s; }
+        .direction-node:nth-child(3) { animation-delay: 0.2s; }
+        .direction-node:nth-child(4) { animation-delay: 0.3s; }
+        .direction-node:nth-child(5) { animation-delay: 0.4s; }
+
+        .direction-node::after {
+            content: '↓';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #F5A623;
+            font-weight: bold;
+            top: 100%;
+            margin-top: 16px;
+            opacity: 0.6;
+        }
+
+        .direction-node:last-child::after {
+            content: '↻';
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        .direction-card {
+            background: linear-gradient(135deg, #1A1D27 0%, #1E222D 100%);
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
+        .direction-card:hover {
+            border-color: rgba(245, 166, 35, 0.5);
+            box-shadow: 0 16px 40px rgba(245, 166, 35, 0.1);
+        }
+
+        .direction-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(245, 166, 35, 0.2);
+        }
+
+        .direction-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F5A623, #FFC947);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #0F1117;
+            flex-shrink: 0;
+        }
+
+        .direction-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #F0EDE8;
+            margin: 0;
+        }
+
+        .direction-blocks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .direction-blocks {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .direction-block {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .direction-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #F5A623;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .direction-content {
+            font-size: 14px;
+            color: #A8A29E;
+            line-height: 1.7;
+        }
+
+        /* ===== NEW: КОНКРЕТНІ КРОКИ ===== */
+        .direction-steps {
+            background-color: rgba(245, 166, 35, 0.04);
+            border-left: 3px solid #F5A623;
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 32px;
+        }
+
+        .direction-steps-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #F5A623;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .direction-steps-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .direction-steps-list li {
+            font-size: 13px;
+            color: #A8A29E;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .direction-steps-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .direction-steps-list li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: #F5A623;
+            font-weight: 600;
+        }
+
+        /* ===== NEW: РЕЗУЛЬТАТ & ЗАЛЕЖНОСТІ ROW ===== */
+        .direction-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(245, 166, 35, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .direction-footer {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        .direction-result,
+        .direction-dependencies {
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .direction-result-label,
+        .direction-dependencies-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #F5A623;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .direction-result {
+            color: #4ADE80;
+        }
+
+        .direction-dependencies {
+            color: #6B6560;
+        }
+
+        /* ===== SECTION 5: GANTT CHART (NEW HORIZONTAL BAR FORMAT) ===== */
+        .gantt-container {
+            margin-top: 64px;
+            overflow-x: auto;
+        }
+
+        .gantt-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            min-width: 100%;
+        }
+
+        .gantt-timeline-header {
+            display: flex;
+            margin-bottom: 24px;
+        }
+
+        .gantt-timeline-header-label {
+            width: 180px;
+            flex-shrink: 0;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #6B6560;
+            font-weight: 600;
+        }
+
+        .gantt-timeline-header-segments {
+            display: flex;
+            flex: 1;
+            gap: 0;
+        }
+
+        .gantt-timeline-segment {
+            flex: 1;
+            text-align: center;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: #A8A29E;
+            font-weight: 500;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(245, 166, 35, 0.1);
+        }
+
+        .gantt-direction-row {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .gantt-direction-label {
+            width: 180px;
+            flex-shrink: 0;
+            font-weight: 600;
+            font-size: 14px;
+            padding-right: 16px;
+        }
+
+        .gantt-bars-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+            border: 1px solid rgba(245, 166, 35, 0.1);
+            overflow: hidden;
+        }
+
+        .gantt-bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding: 0 8px;
+            color: #0F1117;
+            font-weight: 600;
+        }
+
+        .gantt-bar-segment-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Direction color schemes */
+        .gantt-dev { background: linear-gradient(90deg, #3B82F6, #1E40AF); }
+        .gantt-community { background: linear-gradient(90deg, #10B981, #047857); }
+        .gantt-landing { background: linear-gradient(90deg, #F59E0B, #D97706); }
+        .gantt-production { background: linear-gradient(90deg, #8B5CF6, #6D28D9); }
+        .gantt-marketing { background: linear-gradient(90deg, #EF4444, #DC2626); }
+
+        /* Proportional widths for time segments: 20%, 40%, 20%, 10%, 10% */
+        .gantt-w1 { width: 20%; }
+        .gantt-w2 { width: 40%; }
+        .gantt-w3 { width: 20%; }
+        .gantt-w4 { width: 10%; }
+        .gantt-w5 { width: 10%; }
+
+        @media (max-width: 768px) {
+            .gantt-direction-label {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .gantt-direction-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .gantt-bars-container {
+                width: 100%;
+            }
+
+            .gantt-timeline-header {
+                flex-direction: column;
+            }
+
+            .gantt-timeline-header-label {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .gantt-timeline-header-segments {
+                width: 100%;
+            }
+        }
+
+        /* ===== SECTION 6: XYZ TARGETS ===== */
+        .targets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        @media (max-width: 1024px) {
+            .targets-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .targets-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .target-card {
+            background-color: #1A1D27;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .target-card:nth-child(1) { animation-delay: 0s; }
+        .target-card:nth-child(2) { animation-delay: 0.1s; }
+        .target-card:nth-child(3) { animation-delay: 0.2s; }
+
+        .target-card:hover {
+            background-color: #1E222D;
+            border-color: rgba(245, 166, 35, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(245, 166, 35, 0.1);
+        }
+
+        .target-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 800;
+            color: rgba(245, 166, 35, 0.15);
+            position: absolute;
+            top: 16px;
+            right: 24px;
+        }
+
+        .target-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #F5A623;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .target-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #F0EDE8;
+            margin-bottom: 32px;
+        }
+
+        .target-items {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .target-metric {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .metric-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: #A8A29E;
+        }
+
+        .metric-bar {
+            width: 100%;
+            height: 8px;
+            background-color: rgba(245, 166, 35, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .metric-fill-x { background: linear-gradient(90deg, #F5A623, #A8A29E); width: 40%; }
+        .metric-fill-y { background: linear-gradient(90deg, #F5A623, #4ADE80); width: 70%; }
+        .metric-fill-z { background: linear-gradient(90deg, #4ADE80, #10B981); width: 95%; }
+
+        footer {
+            text-align: center;
+            padding: 64px 24px;
+            border-top: 1px solid rgba(245, 166, 35, 0.2);
+            color: #6B6560;
+            font-size: 14px;
+        }
+
+        .scroll-fade {
+            opacity: 0;
+        }
+
+        .scroll-fade.visible {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== SECTION 1: MARKET TAM/SAM/SOM ===== -->
+    <section>
+        <div class="section-number">01</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Ринок & Можливість</h1>
+                <p class="section-subtitle">Чому ПДР потребує дигіталізації</p>
+            </div>
+
+            <div class="market-section">
+                <div class="circles-container">
+                    <div class="circle circle-tam">
+                        <div class="circle-label">TAM</div>
+                        <div class="circle-value">6.3 млрд ₴</div>
+                    </div>
+                    <div class="circle circle-sam">
+                        <div class="circle-label">SAM</div>
+                        <div class="circle-value">1.2–1.6 млрд ₴</div>
+                    </div>
+                    <div class="circle circle-som">
+                        <div class="circle-label">SOM</div>
+                        <div class="circle-value">120–320 млн ₴</div>
+                    </div>
+                </div>
+
+                <div class="market-descriptions">
+                    <div class="market-description-item">
+                        <strong>TAM — Загальний ринок водійської освіти в Україні</strong>
+                        <p>~300,000 нових водіїв щороку × середній чек ~21,000₴ = 6.3 млрд ₴/рік. Це всі гроші, які витрачаються на навчання водіїв в Україні.</p>
+                    </div>
+                    <div class="market-description-item">
+                        <strong>SAM — Частина, яку можна перевести в онлайн</strong>
+                        <p>20–25% від TAM: теорія, тести ПДР, підписки, маркетплейс інструкторів, онлайн-запис. Практику водіння не замінити — тому не весь ринок.</p>
+                    </div>
+                    <div class="market-description-item">
+                        <strong>SOM — Скільки ми реально плануємо заробити</strong>
+                        <p>10–20% від SAM за 2–3 роки = 120–320 млн ₴/рік. Це реалістична ціль з урахуванням конкуренції, часу на розвиток та ресурсів.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>Методологія:</strong> TAM розрахований на основі даних Держстату (кількість нових водіїв) × середній чек навчання. SAM = частка ринку яку технічно можна обслуговувати онлайн. SOM = реалістична частка з урахуванням конкуренції та часу.
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 2: USER JOURNEY ===== -->
+    <section>
+        <div class="section-number">02</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Шлях користувача</h1>
+                <p class="section-subtitle">Від першого дня до активного користувача</p>
+            </div>
+
+            <div class="journey-timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-steps">
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle">1</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Дізнається про проект</div>
+                            <div class="step-description">Користувач знаходить наш TG-канал, Instagram або лендінг через органічний пошук, від друзів або рекламу. Бачить короткі відео про ПДР-лайфхаки.</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle">2</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Реєструється</div>
+                            <div class="step-description">Натискає на лендінг, вводить email і телефон. Отримує лист з лінком на завантаження першого безкоштовного модуля (5 хвилин теорії).</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle">3</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Пробує безкоштовний контент</div>
+                            <div class="step-description">Переглядає першу тему, розуміє якість. Якщо сподобалося — готовий купити повний курс або підписку на тести.</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle">4</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Купує перший продукт</div>
+                            <div class="step-description">Оплачує курс теорії (5.5-8K₴). Отримує доступ до особистого кабінету, може слідкувати за прогресом, переглядати всі уроки офлайн.</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle">5</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Розширює лернінг</div>
+                            <div class="step-description">Підписується на тести ПДР (149-249₴/міс). Якщо потрібна практика — шукає і бронює інструктора через маркетплейс в додатку. Платформа отримує комісію 10-15% з кожного бронювання.</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle">6</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Залишається активним</div>
+                            <div class="step-description">Отримує посвідчення. Залишається в спільноті (запрошує друзів, отримує referral бонуси). Купує спецкурс (контраварійне водіння, зимове водіння) — 3-5K₴.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 3: REVENUE STREAMS ===== -->
+    <section>
+        <div class="section-number">03</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Потоки доходу</h1>
+                <p class="section-subtitle">Як монетизувати аудиторію</p>
+            </div>
+
+            <div class="revenue-cards">
+                <div class="revenue-card scroll-fade">
+                    <div class="revenue-product-name">Курс теорії</div>
+                    <span class="revenue-badge">Разова покупка</span>
+                    <span class="revenue-price">5.5K–8K₴</span>
+                    <div class="revenue-bar"><div class="revenue-bar-fill"></div></div>
+                </div>
+
+                <div class="revenue-card scroll-fade">
+                    <div class="revenue-product-name">Підписка на тести ПДР</div>
+                    <span class="revenue-badge">Щомісячна</span>
+                    <span class="revenue-price">149–249₴</span>
+                    <div class="revenue-bar"><div class="revenue-bar-fill"></div></div>
+                </div>
+
+                <div class="revenue-card scroll-fade">
+                    <div class="revenue-product-name">Маркетплейс інструкторів</div>
+                    <span class="revenue-badge">Комісія</span>
+                    <span class="revenue-price">10–15%</span>
+                    <div class="revenue-bar"><div class="revenue-bar-fill"></div></div>
+                </div>
+
+                <div class="revenue-card scroll-fade">
+                    <div class="revenue-product-name">Спецкурси</div>
+                    <span class="revenue-badge">Разова покупка</span>
+                    <span class="revenue-price">3K–5K₴</span>
+                    <div class="revenue-bar"><div class="revenue-bar-fill"></div></div>
+                </div>
+
+                <div class="revenue-card scroll-fade">
+                    <div class="revenue-product-name">Корпоративні програми</div>
+                    <span class="revenue-badge">B2B контракт</span>
+                    <span class="revenue-price">100K–500K₴+</span>
+                    <div class="revenue-bar"><div class="revenue-bar-fill"></div></div>
+                </div>
+            </div>
+
+            <div class="ltv-section">
+                <h3 class="ltv-title">Середній дохід з клієнта (LTV)</h3>
+                <p class="ltv-subtitle">Три сценарії залежно від конверсії та retention</p>
+
+                <div class="ltv-cards">
+                    <!-- Scenario X -->
+                    <div class="ltv-card scroll-fade">
+                        <span class="ltv-card-label">Сценарій X</span>
+                        <h4 class="ltv-card-title">Мінімальний</h4>
+                        <p class="ltv-card-description">Курс теорії + 3 міс тестів + практика через маркетплейс (комісія 10%)</p>
+                        <div class="ltv-calculation">
+                            ₴5,500 (курс теорії)<br>
+                            + ₴747 (3 міс × 249₴)<br>
+                            + ₴2,800 (комісія 10% з 40 уроків × 700₴)<br>
+                            ——————
+                        </div>
+                        <span class="ltv-total">~₴9,000</span>
+                    </div>
+
+                    <!-- Scenario Y -->
+                    <div class="ltv-card scroll-fade">
+                        <span class="ltv-card-label">Сценарій Y</span>
+                        <h4 class="ltv-card-title">Плановий</h4>
+                        <p class="ltv-card-description">Повний курс + 4 міс підписка + практика (комісія 12.5%) + допродажі</p>
+                        <div class="ltv-calculation">
+                            ₴6,500 (курс теорії)<br>
+                            + ₴996 (4 міс × 249₴)<br>
+                            + ₴3,500 (комісія 12.5% з 40 уроків × 700₴)<br>
+                            + ₴2,000 (допродажі: преміум-контент, консультації)<br>
+                            ——————
+                        </div>
+                        <span class="ltv-total">~₴13,000</span>
+                    </div>
+
+                    <!-- Scenario Z -->
+                    <div class="ltv-card scroll-fade">
+                        <span class="ltv-card-label">Сценарій Z</span>
+                        <h4 class="ltv-card-title">Найкращий</h4>
+                        <p class="ltv-card-description">Преміум курс + 6 міс підписка + практика (комісія 15%) + спецкурс</p>
+                        <div class="ltv-calculation">
+                            ₴8,000 (преміум курс теорії)<br>
+                            + ₴1,494 (6 міс × 249₴)<br>
+                            + ₴4,200 (комісія 15% з 40 уроків × 700₴)<br>
+                            + ₴4,500 (спецкурс)<br>
+                            ——————
+                        </div>
+                        <span class="ltv-total">~₴18,000</span>
+                    </div>
+                </div>
+
+                <div class="ltv-disclaimer">
+                    <strong>⚠ Розраховані орієнтовно.</strong> Середній дохід з клієнта: від ₴9,000 до ₴18,000. Комісія з практики розрахована на 40 уроків × 700₴/урок (зона 3). Ціни будуть тестуватись і адаптуватись.
+                </div>
+            </div>
+
+            <!-- ===== MARKETING METRICS: CAC / LTV / ROI ===== -->
+            <div class="ltv-section">
+                <h3 class="ltv-title">Маркетингові метрики та прогноз</h3>
+                <p class="ltv-subtitle">На основі реальних даних Антарес (лютий-березень 2026)</p>
+
+                <!-- Channels -->
+                <div style="margin-bottom:48px;">
+                    <h4 style="font-size:20px;font-weight:600;color:#F0EDE8;margin-bottom:24px;">Канали залучення</h4>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+
+                        <div style="background:#1A1D27;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;border-top:3px solid #3B82F6;">
+                            <div style="font-size:13px;color:#3B82F6;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Google Ads</div>
+                            <div style="font-family:'DM Mono',monospace;font-size:24px;color:#F0EDE8;font-weight:600;">65.86₴<span style="font-size:13px;color:#A8A29E;font-weight:400;"> / лід</span></div>
+                            <div style="font-size:12px;color:#A8A29E;margin-top:8px;">CPC: 3.01₴ · Конверсія кліку в лід: 4.6%</div>
+                            <div style="font-size:11px;color:#6B6560;margin-top:4px;">Джерело: кабінет Google Ads Антарес</div>
+                        </div>
+
+                        <div style="background:#1A1D27;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;border-top:3px solid #8B5CF6;">
+                            <div style="font-size:13px;color:#8B5CF6;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Facebook / Instagram</div>
+                            <div style="font-family:'DM Mono',monospace;font-size:24px;color:#F0EDE8;font-weight:600;">104₴<span style="font-size:13px;color:#A8A29E;font-weight:400;"> / лід</span></div>
+                            <div style="font-size:12px;color:#A8A29E;margin-top:8px;">Основний канал обізнаності (58.8% дізнаються через Insta)</div>
+                            <div style="font-size:11px;color:#6B6560;margin-top:4px;">Джерело: дані Антарес + customer survey</div>
+                        </div>
+
+                        <div style="background:#1A1D27;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;border-top:3px solid #10B981;">
+                            <div style="font-size:13px;color:#10B981;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Органіка + Рекомендації</div>
+                            <div style="font-family:'DM Mono',monospace;font-size:24px;color:#F0EDE8;font-weight:600;">0₴<span style="font-size:13px;color:#A8A29E;font-weight:400;"> / лід</span></div>
+                            <div style="font-size:12px;color:#A8A29E;margin-top:8px;">64% трафіку — органіка. 58.8% обирають бо порадили</div>
+                            <div style="font-size:11px;color:#6B6560;margin-top:4px;">Джерело: аналітика сайту + customer survey</div>
+                        </div>
+
+                        <div style="background:#1A1D27;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;border-top:3px solid #F5A623;">
+                            <div style="font-size:13px;color:#F5A623;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">TG / TikTok / Threads</div>
+                            <div style="font-family:'DM Mono',monospace;font-size:24px;color:#F0EDE8;font-weight:600;">Тестуємо<span style="font-size:13px;color:#A8A29E;font-weight:400;"></span></div>
+                            <div style="font-size:12px;color:#A8A29E;margin-top:8px;">Нові канали. Вартість визначимо на фазі тестування</div>
+                            <div style="font-size:11px;color:#6B6560;margin-top:4px;">Ціль: CPL нижче за бенчмарк Google (66₴)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAC / LTV / ROI XYZ -->
+                <h4 style="font-size:20px;font-weight:600;color:#F0EDE8;margin-bottom:12px;">Юніт-економіка платформи: XYZ-прогноз</h4>
+                <p style="font-size:14px;color:#A8A29E;margin-bottom:16px;">Це не опціональний EdTech. Це обов'язкова сертифікація — людина МУСИТЬ пройти навчання щоб отримати права. Конверсія вища ніж у звичайних онлайн-курсах, бо клієнт обирає не "чи вчитись", а "де вчитись".</p>
+                <p style="font-size:14px;color:#A8A29E;margin-bottom:32px;">Розрахунки базуються на CPL Антарес як бенчмарку. Конверсія — припущення (потребує тестування).</p>
+
+                <div class="ltv-cards">
+                    <!-- X -->
+                    <div class="ltv-card scroll-fade">
+                        <span class="ltv-card-label">X — Песимістичний</span>
+                        <h4 class="ltv-card-title">Високий CPL, помірна конверсія</h4>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+                            <div style="background:rgba(248,113,113,0.08);border-radius:8px;padding:12px;">
+                                <div style="font-size:11px;color:#F87171;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">CPL</div>
+                                <div style="font-family:'DM Mono',monospace;font-size:20px;color:#F0EDE8;font-weight:600;">~100₴</div>
+                            </div>
+                            <div style="background:rgba(248,113,113,0.08);border-radius:8px;padding:12px;">
+                                <div style="font-size:11px;color:#F87171;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">Конверсія в клієнта</div>
+                                <div style="font-family:'DM Mono',monospace;font-size:20px;color:#F0EDE8;font-weight:600;">5%</div>
+                            </div>
+                        </div>
+
+                        <div class="ltv-calculation">
+                            CAC: 100₴ ÷ 5% = <strong style="color:#F87171;">2,000₴</strong><br>
+                            LTV: <strong>9,000₴</strong><br>
+                            ——————<br>
+                            LTV / CAC: <strong style="color:#F5A623;">4.5x</strong><br>
+                            ROI на клієнта: <strong style="color:#F5A623;">350%</strong>
+                        </div>
+                        <div style="font-size:12px;color:#A8A29E;line-height:1.6;">Навіть при песимістичному сценарії — кожен вкладений в залучення долар повертає 4.5 долари доходу.</div>
+                    </div>
+
+                    <!-- Y -->
+                    <div class="ltv-card scroll-fade">
+                        <span class="ltv-card-label">Y — Плановий</span>
+                        <h4 class="ltv-card-title">CPL на рівні бенчмарку, добра конверсія</h4>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+                            <div style="background:rgba(245,166,35,0.08);border-radius:8px;padding:12px;">
+                                <div style="font-size:11px;color:#F5A623;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">CPL</div>
+                                <div style="font-family:'DM Mono',monospace;font-size:20px;color:#F0EDE8;font-weight:600;">~66₴</div>
+                            </div>
+                            <div style="background:rgba(245,166,35,0.08);border-radius:8px;padding:12px;">
+                                <div style="font-size:11px;color:#F5A623;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">Конверсія в клієнта</div>
+                                <div style="font-family:'DM Mono',monospace;font-size:20px;color:#F0EDE8;font-weight:600;">8%</div>
+                            </div>
+                        </div>
+
+                        <div class="ltv-calculation">
+                            Маркетинг CAC: 66₴ ÷ 8% = 825₴<br>
+                            + операційні витрати: ~1,000₴<br>
+                            Повний CAC: <strong style="color:#F5A623;">~1,850₴</strong><br>
+                            LTV: <strong>13,000₴</strong><br>
+                            ——————<br>
+                            LTV / CAC: <strong style="color:#4ADE80;">~7x</strong>
+                        </div>
+                        <div style="font-size:12px;color:#A8A29E;line-height:1.6;">Здорова юніт-економіка. 7x означає що кожна гривня на залучення повертає 7 гривень доходу.</div>
+                    </div>
+
+                    <!-- Z -->
+                    <div class="ltv-card scroll-fade">
+                        <span class="ltv-card-label">Z — Оптимістичний</span>
+                        <h4 class="ltv-card-title">Оптимізований CAC + органіка</h4>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+                            <div style="background:rgba(74,222,128,0.08);border-radius:8px;padding:12px;">
+                                <div style="font-size:11px;color:#4ADE80;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">CPL (blended)</div>
+                                <div style="font-family:'DM Mono',monospace;font-size:20px;color:#F0EDE8;font-weight:600;">~50₴</div>
+                            </div>
+                            <div style="background:rgba(74,222,128,0.08);border-radius:8px;padding:12px;">
+                                <div style="font-size:11px;color:#4ADE80;text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">Конверсія в клієнта</div>
+                                <div style="font-family:'DM Mono',monospace;font-size:20px;color:#F0EDE8;font-weight:600;">10%</div>
+                            </div>
+                        </div>
+
+                        <div class="ltv-calculation">
+                            Маркетинг CAC: 50₴ ÷ 10% = 500₴<br>
+                            + операційні витрати: ~1,300₴<br>
+                            Повний CAC: <strong style="color:#4ADE80;">~1,800₴</strong><br>
+                            LTV: <strong>18,000₴</strong><br>
+                            ——————<br>
+                            LTV / CAC: <strong style="color:#4ADE80;">~10x</strong>
+                        </div>
+                        <div style="font-size:12px;color:#A8A29E;line-height:1.6;">10x — сильний показник для зрілого продукту з органічним трафіком та сарафанним радіо. Реалістична верхня межа.</div>
+                    </div>
+                </div>
+
+                <div class="ltv-disclaimer">
+                    <strong>⚠ Що є фактом, а що припущенням:</strong><br><br>
+                    <strong style="color:#4ADE80;">Факт</strong> (дані Антарес): CPL Google = 65.86₴, CPL Facebook = 104₴<br><br>
+                    <strong style="color:#F5A623;">Припущення</strong> (потребує тестування): конверсія ліда в клієнта (5-10%), CPL нових каналів, retention підписки<br><br>
+                    <strong>Контекст:</strong> Конверсія вища за звичайний EdTech, бо це обов'язкова сертифікація — клієнт шукає де купити, а не чи купити.<br><br>
+                    Точні цифри отримаємо на фазі тестового трафіку (тижні 3-8).
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 4: 5 DIRECTIONS ===== -->
+    <section>
+        <div class="section-number">04</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">5 напрямків виконання</h1>
+                <p class="section-subtitle">Паралельні потоки роботи до запуску</p>
+            </div>
+
+            <div class="directions-intro">
+                <strong>Стратегія:</strong> Замість послідовного виконання, запускаємо 5 напрямків одночасно. Кожен напрямок має свої пов'язані завдання, але всі вони утворюють цикл: Розробка потребує Контенту, Маркетинг приводить в Спільноту, Спільнота тестує Продукт. Це не вибір А або Б, це A+B+C+D+E одночасно.
+            </div>
+
+            <div class="directions-flow">
+                <!-- DIRECTION 1 -->
+                <div class="direction-node">
+                    <div class="direction-card">
+                        <div class="direction-header">
+                            <div class="direction-badge">1</div>
+                            <h3 class="direction-title">Розробка</h3>
+                        </div>
+                        <div class="direction-blocks">
+                            <div class="direction-block">
+                                <span class="direction-label">Що</span>
+                                <div class="direction-content">MVP з модулем тестування, особистим кабінетом та адмін-панеллю. Інтеграція з платіжною системою. Система навчання ПДР.</div>
+                            </div>
+                            <div class="direction-block">
+                                <span class="direction-label">Чому</span>
+                                <div class="direction-content">Без функціонуючого продукту немає чого монетизувати. MVP дозволяє протестувати моделі навчання і платіжні конверсії ще до масштабування.</div>
+                            </div>
+                        </div>
+                        <div class="direction-steps">
+                            <div class="direction-steps-title">Конкретні кроки</div>
+                            <ul class="direction-steps-list">
+                                <li>Написати детальне ТЗ на MVP (тести + кабінет + адмінка)</li>
+                                <li>Визначити технічний стек та підрядника</li>
+                                <li>Розробити прототип та дизайн-систему</li>
+                                <li>Побудувати MVP з інтеграцією (8–10 тижнів)</li>
+                                <li>Провести бета-тестування з комʼюніті</li>
+                            </ul>
+                        </div>
+                        <div class="direction-footer">
+                            <div class="direction-result">
+                                <span class="direction-result-label">Ключовий результат</span>
+                                Робочий MVP з тестами ПДР, методологією навчання та особистим кабінетом (1000+ користувачів на бета)
+                            </div>
+                            <div class="direction-dependencies">
+                                <span class="direction-dependencies-label">Залежності</span>
+                                Потребує готову методологію від Напрямку 4 (Продакшн) та бета-тестерів від Напрямку 2 (Спільнота)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIRECTION 2 -->
+                <div class="direction-node">
+                    <div class="direction-card">
+                        <div class="direction-header">
+                            <div class="direction-badge">2</div>
+                            <h3 class="direction-title">Спільнота</h3>
+                        </div>
+                        <div class="direction-blocks">
+                            <div class="direction-block">
+                                <span class="direction-label">Що</span>
+                                <div class="direction-content">Telegram-канал та чат для спільноти. Щоденний контент (ПДР-лайфхаки, квізи, новини). Вірусні формати та челенджи. Колаборації з авто-спільнотами.</div>
+                            </div>
+                            <div class="direction-block">
+                                <span class="direction-label">Чому</span>
+                                <div class="direction-content">Спільнота до запуску = люди які вже вам довіряють. Коли додаток виходить — не починаємо з нуля. Telegram дозволяє прямий зв'язок з аудиторією без алгоритму.</div>
+                            </div>
+                        </div>
+                        <div class="direction-steps">
+                            <div class="direction-steps-title">Конкретні кроки</div>
+                            <ul class="direction-steps-list">
+                                <li>Створити TG-канал та чат-групу</li>
+                                <li>Розробити контент-план на 3 місяці</li>
+                                <li>Публікувати щоденно (ПДР-лайфхаки, квізи, меми)</li>
+                                <li>Запустити вірусні формати (челенджі, опитування, челлендж)</li>
+                                <li>Організувати колаборації з авто-спільнотами</li>
+                            </ul>
+                        </div>
+                        <div class="direction-footer">
+                            <div class="direction-result">
+                                <span class="direction-result-label">Ключовий результат</span>
+                                10,000+ підписників Telegram на момент запуску додатку + активна спільнота (10% DAU)
+                            </div>
+                            <div class="direction-dependencies">
+                                <span class="direction-dependencies-label">Залежності</span>
+                                Контент для постів частково від Напрямку 4 (Продакшн), трафік від Напрямку 5 (Маркетинг)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIRECTION 3 -->
+                <div class="direction-node">
+                    <div class="direction-card">
+                        <div class="direction-header">
+                            <div class="direction-badge">3</div>
+                            <h3 class="direction-title">Лендінг</h3>
+                        </div>
+                        <div class="direction-blocks">
+                            <div class="direction-block">
+                                <span class="direction-label">Що</span>
+                                <div class="direction-content">Лендінг-сторінка з оффером та формою реєстрації. A/B тестування креативу та копі. Таргетована реклама (Google, Facebook). Аналітика та UTM-трекінг.</div>
+                            </div>
+                            <div class="direction-block">
+                                <span class="direction-label">Чому</span>
+                                <div class="direction-content">Лендінг — це перший поінт конверсії платної аудиторії. A/B тестування на ранній стадії дозволяє зрозуміти, які меседжі працюють і при якій вартості залучення ПДР цікава.</div>
+                            </div>
+                        </div>
+                        <div class="direction-steps">
+                            <div class="direction-steps-title">Конкретні кроки</div>
+                            <ul class="direction-steps-list">
+                                <li>Зверстати лендінг з оффером та формою реєстрації</li>
+                                <li>Налаштувати аналітику та UTM-трекінг</li>
+                                <li>Запустити тестову закупку трафіку (Google Ads + Facebook)</li>
+                                <li>Провести A/B тести (креативи × аудиторії × оффери)</li>
+                                <li>Масштабувати кращі комбінації</li>
+                            </ul>
+                        </div>
+                        <div class="direction-footer">
+                            <div class="direction-result">
+                                <span class="direction-result-label">Ключовий результат</span>
+                                Вартість залучення зацікавленого < 66₴ (бенчмарк Antares) та 3,000+ зареєстрованих користувачів
+                            </div>
+                            <div class="direction-dependencies">
+                                <span class="direction-dependencies-label">Залежності</span>
+                                Креативи від Напрямку 5 (Маркетинг), оффер пов'язаний з Напрямком 1 (Розробка)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIRECTION 4 -->
+                <div class="direction-node">
+                    <div class="direction-card">
+                        <div class="direction-header">
+                            <div class="direction-badge">4</div>
+                            <h3 class="direction-title">Продакшн контенту</h3>
+                        </div>
+                        <div class="direction-blocks">
+                            <div class="direction-block">
+                                <span class="direction-label">Що</span>
+                                <div class="direction-content">Повний курс теорії ПДР (20–30 тем). Зйомка в приміщеннях Antares з їх інструкторами. Якісний продакшн. Перепис тестів під методологію навчання.</div>
+                            </div>
+                            <div class="direction-block">
+                                <span class="direction-label">Чому</span>
+                                <div class="direction-content">Контент — це те, що відрізняє нас від конкурентів. Якісні відеоуроки від інструкторів найбільшої мережи — це то, що інші не можуть повторити швидко. Це наша конкурентна перевага.</div>
+                            </div>
+                        </div>
+                        <div class="direction-steps">
+                            <div class="direction-steps-title">Конкретні кроки</div>
+                            <ul class="direction-steps-list">
+                                <li>Розробити методологію навчання (заучив → зрозумів → застосував)</li>
+                                <li>Написати сценарії для 20–30 тем з квізами</li>
+                                <li>Підготувати локації та обладнання</li>
+                                <li>Зняти всі теми (3–5 тем/тиждень протягом 8 тижнів)</li>
+                                <li>Змонтувати та підготувати до завантаження в MVP</li>
+                            </ul>
+                        </div>
+                        <div class="direction-footer">
+                            <div class="direction-result">
+                                <span class="direction-result-label">Ключовий результат</span>
+                                Повний курс теорії ПДР (20–30 відеоуроків) готовий до інтеграції в платформу на тиждень 13
+                            </div>
+                            <div class="direction-dependencies">
+                                <span class="direction-dependencies-label">Залежності</span>
+                                Потребує приміщення та інструкторів від Antares, інтегрується в Напрямок 1 (Розробка)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIRECTION 5 -->
+                <div class="direction-node">
+                    <div class="direction-card">
+                        <div class="direction-header">
+                            <div class="direction-badge">5</div>
+                            <h3 class="direction-title">Маркетинг та залучення</h3>
+                        </div>
+                        <div class="direction-blocks">
+                            <div class="direction-block">
+                                <span class="direction-label">Що</span>
+                                <div class="direction-content">Акаунти в Instagram, TikTok, Threads. Короткі відео з ПДР-контентом. Таргетована реклама на лендінг та Telegram. A/B тестування.</div>
+                            </div>
+                            <div class="direction-block">
+                                <span class="direction-label">Чому</span>
+                                <div class="direction-content">Присутність на всіх платформах з першого дня. Контент працює одночасно на впізнаваність, залучення, та SEO. Кожен пост — це і маркетинг, і цінність для аудиторії.</div>
+                            </div>
+                        </div>
+                        <div class="direction-steps">
+                            <div class="direction-steps-title">Конкретні кроки</div>
+                            <ul class="direction-steps-list">
+                                <li>Створити акаунти в Instagram, TikTok, Threads, YouTube Shorts</li>
+                                <li>Розробити контент-план (short-form ПДР-відео 15–30 секунд)</li>
+                                <li>Тестувати формати та визначити кращі (лайфхаки, мемам, челлендж)</li>
+                                <li>Запустити таргетовану рекламу на лендінг та TG-канал</li>
+                                <li>Масштабувати канали та оффери що працюють</li>
+                            </ul>
+                        </div>
+                        <div class="direction-footer">
+                            <div class="direction-result">
+                                <span class="direction-result-label">Ключовий результат</span>
+                                8,000+ підписників на соцмережах + оптимізовані рекламні комбо (ROI > 3x)
+                            </div>
+                            <div class="direction-dependencies">
+                                <span class="direction-dependencies-label">Залежності</span>
+                                Контент частково від Напрямку 4 (Продакшн), веде трафік на Напрямок 3 (Лендінг) та Напрямок 2 (Спільнота)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="disclaimer" style="margin-top: 64px;">
+                <strong>Як вони пов'язані:</strong> Маркетинг (5) → приводить людей в Спільноту (2) → Спільнота тестує Продукт (1) → Продукт використовує Контент (4) → Контент залучає через Маркетинг (5). Це не лінійний процес, а цикл, де кожен елемент посилює інші. Лендінг (3) служить як центральний поінт конверсії для всіх потоків.
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 5: LAUNCH GANTT (NEW HORIZONTAL FORMAT) ===== -->
+    <section>
+        <div class="section-number">05</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">План запуску</h1>
+                <p class="section-subtitle">20 тижнів від старту до релізу</p>
+            </div>
+
+            <div class="gantt-container">
+                <div class="gantt-wrapper">
+                    <!-- Timeline Header -->
+                    <div class="gantt-timeline-header">
+                        <div class="gantt-timeline-header-label">Тижні</div>
+                        <div class="gantt-timeline-header-segments">
+                            <div class="gantt-timeline-segment">Неделі 1–4</div>
+                            <div class="gantt-timeline-segment">Неделі 5–12</div>
+                            <div class="gantt-timeline-segment">Неделі 13–16</div>
+                            <div class="gantt-timeline-segment">Неделі 17–18</div>
+                            <div class="gantt-timeline-segment">Неделі 19–20</div>
+                        </div>
+                    </div>
+
+                    <!-- Direction 1: Розробка -->
+                    <div class="gantt-direction-row">
+                        <div class="gantt-direction-label" style="color: #3B82F6;">Розробка</div>
+                        <div class="gantt-bars-container">
+                            <div class="gantt-bar-segment gantt-dev gantt-w1">
+                                <div class="gantt-bar-segment-text">ТЗ, стек</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-dev gantt-w2">
+                                <div class="gantt-bar-segment-text">MVP розробка</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-dev gantt-w3">
+                                <div class="gantt-bar-segment-text">Інтеграція</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-dev gantt-w4">
+                                <div class="gantt-bar-segment-text">Бета-тест</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-dev gantt-w5">
+                                <div class="gantt-bar-segment-text">Реліз</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direction 2: Спільнота -->
+                    <div class="gantt-direction-row">
+                        <div class="gantt-direction-label" style="color: #10B981;">Спільнота</div>
+                        <div class="gantt-bars-container">
+                            <div class="gantt-bar-segment gantt-community gantt-w1">
+                                <div class="gantt-bar-segment-text">Запуск TG</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-community gantt-w2">
+                                <div class="gantt-bar-segment-text">Контент, ріст</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-community gantt-w3">
+                                <div class="gantt-bar-segment-text">Масштабування</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-community gantt-w4">
+                                <div class="gantt-bar-segment-text">Бета з чату</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-community gantt-w5">
+                                <div class="gantt-bar-segment-text">Запуск</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direction 3: Лендінг -->
+                    <div class="gantt-direction-row">
+                        <div class="gantt-direction-label" style="color: #F59E0B;">Лендінг</div>
+                        <div class="gantt-bars-container">
+                            <div class="gantt-bar-segment gantt-landing gantt-w1">
+                                <div class="gantt-bar-segment-text">Сайт live</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-landing gantt-w2">
+                                <div class="gantt-bar-segment-text">A/B тести</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-landing gantt-w3">
+                                <div class="gantt-bar-segment-text">Масштабування</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-landing gantt-w4">
+                                <div class="gantt-bar-segment-text">Прогрів</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-landing gantt-w5">
+                                <div class="gantt-bar-segment-text">Конверсія</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direction 4: Продакшн -->
+                    <div class="gantt-direction-row">
+                        <div class="gantt-direction-label" style="color: #8B5CF6;">Продакшн</div>
+                        <div class="gantt-bars-container">
+                            <div class="gantt-bar-segment gantt-production gantt-w1">
+                                <div class="gantt-bar-segment-text">Методологія</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-production gantt-w2">
+                                <div class="gantt-bar-segment-text">Зйомка 20–30 тем</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-production gantt-w3">
+                                <div class="gantt-bar-segment-text">Монтаж</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-production gantt-w4">
+                                <div class="gantt-bar-segment-text">Перевірка</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-production gantt-w5">
+                                <div class="gantt-bar-segment-text">✓ Готово</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direction 5: Маркетинг -->
+                    <div class="gantt-direction-row">
+                        <div class="gantt-direction-label" style="color: #EF4444;">Маркетинг</div>
+                        <div class="gantt-bars-container">
+                            <div class="gantt-bar-segment gantt-marketing gantt-w1">
+                                <div class="gantt-bar-segment-text">Акаунти live</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-marketing gantt-w2">
+                                <div class="gantt-bar-segment-text">Reels, TikTok</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-marketing gantt-w3">
+                                <div class="gantt-bar-segment-text">Масштабування</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-marketing gantt-w4">
+                                <div class="gantt-bar-segment-text">Тизери</div>
+                            </div>
+                            <div class="gantt-bar-segment gantt-marketing gantt-w5">
+                                <div class="gantt-bar-segment-text">Лонч</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 6: XYZ TARGETS ===== -->
+    <section>
+        <div class="section-number">06</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Цілі на момент запуску</h1>
+                <p class="section-subtitle">Тиждень 20 — три сценарії розвитку</p>
+            </div>
+
+            <div class="targets-grid">
+                <!-- X Scenario -->
+                <div class="target-card scroll-fade">
+                    <div class="target-letter">X</div>
+                    <div class="target-label">Мінімальний сценарій</div>
+                    <h4 class="target-title">Якщо не все піде за планом</h4>
+                    <div class="target-items">
+                        <div class="target-metric">
+                            <span class="metric-name">Telegram підписники</span>
+                            <div class="metric-bar"><div class="metric-fill-x"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">5,000</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Instagram + TikTok</span>
+                            <div class="metric-bar"><div class="metric-fill-x"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">3,000</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Реєстрацій на лендінгу</span>
+                            <div class="metric-bar"><div class="metric-fill-x"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">1,000</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">MVP готовий</span>
+                            <div class="metric-bar"><div class="metric-fill-x"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">✓</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Відеоуроків зроблено</span>
+                            <div class="metric-bar"><div class="metric-fill-x"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">20–30</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Бета-тестерів</span>
+                            <div class="metric-bar"><div class="metric-fill-x"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">50+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Y Scenario -->
+                <div class="target-card scroll-fade">
+                    <div class="target-letter">Y</div>
+                    <div class="target-label">Плановий сценарій</div>
+                    <h4 class="target-title">На що розраховуємо</h4>
+                    <div class="target-items">
+                        <div class="target-metric">
+                            <span class="metric-name">Telegram підписники</span>
+                            <div class="metric-bar"><div class="metric-fill-y"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">10,000</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Instagram + TikTok</span>
+                            <div class="metric-bar"><div class="metric-fill-y"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">8,000</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Реєстрацій на лендінгу</span>
+                            <div class="metric-bar"><div class="metric-fill-y"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">3,000</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Вартість залучення</span>
+                            <div class="metric-bar"><div class="metric-fill-y"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">< 66₴</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Повний курс готовий</span>
+                            <div class="metric-bar"><div class="metric-fill-y"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">✓</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Бета-тестерів + рейтинг</span>
+                            <div class="metric-bar"><div class="metric-fill-y"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">150+ (4.0+★)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Z Scenario -->
+                <div class="target-card scroll-fade">
+                    <div class="target-letter">Z</div>
+                    <div class="target-label">Найкращий сценарій</div>
+                    <h4 class="target-title">Якщо все зійдеться</h4>
+                    <div class="target-items">
+                        <div class="target-metric">
+                            <span class="metric-name">Telegram підписники</span>
+                            <div class="metric-bar"><div class="metric-fill-z"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">15,000+</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Instagram + TikTok</span>
+                            <div class="metric-bar"><div class="metric-fill-z"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">15,000+</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Реєстрацій на лендінгу</span>
+                            <div class="metric-bar"><div class="metric-fill-z"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">5,000+</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Вартість залучення</span>
+                            <div class="metric-bar"><div class="metric-fill-z"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">< 40₴</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Product-market fit сигнали</span>
+                            <div class="metric-bar"><div class="metric-fill-z"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">✓</span>
+                        </div>
+                        <div class="target-metric">
+                            <span class="metric-name">Бета-тестерів + рейтинг</span>
+                            <div class="metric-bar"><div class="metric-fill-z"></div></div>
+                            <span class="text-muted" style="font-size: 12px;">300+ (4.5+★)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <!-- ===== SECTION 7: БЮДЖЕТ ПРОЕКТУ ===== -->
+    <section>
+        <div class="section-number">07</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Інвестиції з боку Антарес в запуск</h1>
+                <p class="section-subtitle">Повний бюджет від нуля до працюючого бізнесу</p>
+            </div>
+
+            <!-- Cost Breakdown Table -->
+            <div style="overflow-x: auto; margin-top: 64px;">
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 48px;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid rgba(245, 166, 35, 0.3);">
+                            <th style="text-align: left; padding: 16px 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; color: #F5A623; font-family: 'DM Mono';">Стаття</th>
+                            <th style="text-align: left; padding: 16px 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; color: #F5A623; font-family: 'DM Mono';">Тип</th>
+                            <th style="text-align: right; padding: 16px 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; color: #F5A623; font-family: 'DM Mono';">Сума</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(245, 166, 35, 0.15);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">Розробка платформи<br><span style="font-size:11px;color:#A8A29E;">Частину витрат на розробку вже покриває KDB. Ціна значно нижче ринку — команда KDB повністю складається з розробників, маркетологів, продуктовиків та проджект-менеджерів</span></td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">$10,000/міс × 5 міс</td>
+                            <td style="text-align: right; padding: 16px 12px; font-size: 15px; font-family: 'DM Mono'; color: #F0EDE8; font-weight: 600;">$50,000</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(245, 166, 35, 0.15);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">Дизайн додатку, лендінг, айдентика, брендинг</td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">Разово</td>
+                            <td style="text-align: right; padding: 16px 12px; font-size: 15px; font-family: 'DM Mono'; color: #F0EDE8; font-weight: 600;">$5,000</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(245, 166, 35, 0.15);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">Продакшн відео (зйомка, обробка, монтаж 20-30 уроків)</td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">Разово</td>
+                            <td style="text-align: right; padding: 16px 12px; font-size: 15px; font-family: 'DM Mono'; color: #F0EDE8; font-weight: 600;">$3,000–5,000</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(245, 166, 35, 0.15);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">Маркетинг пре-лонч (таргет, UGC, амбассадори)</td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">Разово — тести гіпотез</td>
+                            <td style="text-align: right; padding: 16px 12px; font-size: 15px; font-family: 'DM Mono'; color: #F0EDE8; font-weight: 600;">$10,000</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(245, 166, 35, 0.15);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">SMM-менеджер (виконавець)<br><span style="font-size:11px;color:#A8A29E;">Реалізує маркетингову стратегію KDB: контент, публікації, комʼюніті</span></td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">$1,200/міс × 5 міс</td>
+                            <td style="text-align: right; padding: 16px 12px; font-size: 15px; font-family: 'DM Mono'; color: #F0EDE8; font-weight: 600;">$6,000</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">Інфраструктура (хостинг, сервіси, аналітика)</td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">$500/міс × 5 міс</td>
+                            <td style="text-align: right; padding: 16px 12px; font-size: 15px; font-family: 'DM Mono'; color: #F0EDE8; font-weight: 600;">$2,500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Budget Total -->
+            <div style="background:#1A1D27;border:2px solid rgba(245,166,35,0.3);border-radius:16px;padding:48px;text-align:center;margin-top:48px;">
+                <div style="font-size:14px;color:#A8A29E;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;">Повна вартість запуску цифрового бізнесу</div>
+                <div style="font-family:'DM Mono',monospace;font-size:56px;font-weight:700;color:#F5A623;margin-bottom:8px;">~$77,000</div>
+                <div style="font-family:'DM Mono',monospace;font-size:20px;color:#A8A29E;margin-bottom:24px;">~3.15M₴</div>
+                <div style="font-size:16px;color:#F0EDE8;max-width:700px;margin:0 auto;line-height:1.6;">Платформа, додаток, повний курс з 20-30 відеоуроків, бренд, маркетинг, комʼюніті — і готовий до запуску бізнес з потенціалом ₴120-320M на рік.</div>
+                <div style="margin-top:24px;font-size:13px;color:#6B6560;">Бюджет на масштабування маркетингу після запуску — визначається за результатами тестів</div>
+            </div>
+
+            <!-- Payment Plan -->
+            <div style="margin-top:64px;">
+                <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#F0EDE8;margin-bottom:12px;">План фінансування</div>
+                <p style="font-size:15px;color:#A8A29E;margin-bottom:32px;line-height:1.6;">Бюджет розбитий на 4 транші. Кожен транш прив'язаний до конкретної фази, результату і точки прийняття рішення. Антарес бачить результат перед кожним наступним платежем.</p>
+
+                <div style="display:flex;flex-direction:column;gap:0;">
+                    <!-- Tranche 1 -->
+                    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid rgba(245,166,35,0.15);">
+                        <div style="padding:24px 16px;border-right:1px solid rgba(245,166,35,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                            <div style="font-family:'DM Mono',monospace;font-size:11px;color:#F5A623;text-transform:uppercase;letter-spacing:0.05em;">Транш 1</div>
+                            <div style="font-family:'DM Mono',monospace;font-size:24px;font-weight:700;color:#F0EDE8;">$17K</div>
+                            <div style="font-size:11px;color:#6B6560;margin-top:4px;">Тижні 1–4</div>
+                        </div>
+                        <div style="padding:24px;">
+                            <div style="font-size:15px;font-weight:600;color:#F0EDE8;margin-bottom:8px;">Старт: стратегія + перші дані з ринку</div>
+                            <div style="font-size:13px;color:#A8A29E;line-height:1.6;margin-bottom:12px;">Розробка (1 міс), дизайн + брендинг, інфра, SMM. Лендінг live, TG запущено, перший трафік закуплено.</div>
+                            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                                <span style="font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(74,222,128,0.1);color:#4ADE80;">Результат: CPL визначено</span>
+                                <span style="font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(245,166,35,0.1);color:#F5A623;">→ Оцінка → Рішення</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tranche 2 -->
+                    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid rgba(245,166,35,0.15);">
+                        <div style="padding:24px 16px;border-right:1px solid rgba(245,166,35,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                            <div style="font-family:'DM Mono',monospace;font-size:11px;color:#F5A623;text-transform:uppercase;letter-spacing:0.05em;">Транш 2</div>
+                            <div style="font-family:'DM Mono',monospace;font-size:24px;font-weight:700;color:#F0EDE8;">$27K</div>
+                            <div style="font-size:11px;color:#6B6560;margin-top:4px;">Тижні 5–12</div>
+                        </div>
+                        <div style="padding:24px;">
+                            <div style="font-size:15px;font-weight:600;color:#F0EDE8;margin-bottom:8px;">Розробка + набір аудиторії + зйомки</div>
+                            <div style="font-size:13px;color:#A8A29E;line-height:1.6;margin-bottom:12px;">Розробка MVP (2 міс), маркетинг-тести ($10K), початок зйомок, SMM. Аудиторія росте, кращі зв'язки масштабуються.</div>
+                            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                                <span style="font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(74,222,128,0.1);color:#4ADE80;">Результат: MVP + аудиторія + контент</span>
+                                <span style="font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(245,166,35,0.1);color:#F5A623;">→ Оцінка → Рішення</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tranche 3 -->
+                    <div style="display:grid;grid-template-columns:140px 1fr;border-bottom:1px solid rgba(245,166,35,0.15);">
+                        <div style="padding:24px 16px;border-right:1px solid rgba(245,166,35,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                            <div style="font-family:'DM Mono',monospace;font-size:11px;color:#F5A623;text-transform:uppercase;letter-spacing:0.05em;">Транш 3</div>
+                            <div style="font-family:'DM Mono',monospace;font-size:24px;font-weight:700;color:#F0EDE8;">$21K</div>
+                            <div style="font-size:11px;color:#6B6560;margin-top:4px;">Тижні 13–18</div>
+                        </div>
+                        <div style="padding:24px;">
+                            <div style="font-size:15px;font-weight:600;color:#F0EDE8;margin-bottom:8px;">Збірка + бета-тест + пре-реліз</div>
+                            <div style="font-size:13px;color:#A8A29E;line-height:1.6;margin-bottom:12px;">Розробка (1.5 міс), монтаж відео, інтеграція контенту в платформу, бета з комʼюніті, прогрів до запуску.</div>
+                            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                                <span style="font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(74,222,128,0.1);color:#4ADE80;">Результат: продукт готовий до лончу</span>
+                                <span style="font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(245,166,35,0.1);color:#F5A623;">→ Оцінка → Рішення</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tranche 4 -->
+                    <div style="display:grid;grid-template-columns:140px 1fr;">
+                        <div style="padding:24px 16px;border-right:1px solid rgba(245,166,35,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                            <div style="font-family:'DM Mono',monospace;font-size:11px;color:#4ADE80;text-transform:uppercase;letter-spacing:0.05em;">Транш 4</div>
+                            <div style="font-family:'DM Mono',monospace;font-size:24px;font-weight:700;color:#F0EDE8;">$12K</div>
+                            <div style="font-size:11px;color:#6B6560;margin-top:4px;">Тижні 19–20</div>
+                        </div>
+                        <div style="padding:24px;">
+                            <div style="font-size:15px;font-weight:600;color:#F0EDE8;margin-bottom:8px;">Запуск + перші клієнти</div>
+                            <div style="font-size:13px;color:#A8A29E;line-height:1.6;margin-bottom:12px;">Фінальна розробка, реліз, розсилка по базі Антарес, лонч по всіх каналах. Перші платящі клієнти.</div>
+                            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                                <span style="font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(74,222,128,0.1);color:#4ADE80;">Результат: бізнес працює</span>
+                                <span style="font-size:12px;padding:4px 12px;border-radius:100px;background:rgba(74,222,128,0.1);color:#4ADE80;">→ Визначаємо бюджет масштабування</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROI Block -->
+            <div style="background-color: rgba(74, 222, 128, 0.08); border-left: 4px solid #4ADE80; padding: 32px; border-radius: 8px; margin-top: 48px;">
+                <div style="font-family: 'DM Mono', monospace; font-size: 12px; text-transform: uppercase; color: #4ADE80; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 16px;">Повернення інвестицій (з урахуванням витрат на залучення)</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;font-size:15px;color:#F0EDE8;line-height:1.8;">
+                    <div>
+                        <div style="font-size:13px;color:#F5A623;font-weight:600;margin-bottom:8px;">Y-СЦЕНАРІЙ (500 клієнтів за рік)</div>
+                        <strong>Інвестиція до запуску:</strong> ~$77K (3.15M₴)<br>
+                        <strong>Залучення 500 клієнтів:</strong> 500 × 825₴ = 412K₴<br>
+                        <strong>Всього витрат:</strong> 3.56M₴<br>
+                        <strong>Дохід:</strong> 500 × ₴13,000 = ₴6.5M<br>
+                        <strong>Прибуток:</strong> ₴2.94M<br>
+                        <strong style="color: #4ADE80; font-size: 18px;">ROI: ~82%</strong><br>
+                        <span style="font-size:13px;color:#A8A29E;">Окупність: 6–9 місяців після запуску</span>
+                    </div>
+                    <div>
+                        <div style="font-size:13px;color:#4ADE80;font-weight:600;margin-bottom:8px;">Z-СЦЕНАРІЙ (1,000 клієнтів за рік)</div>
+                        <strong>Інвестиція до запуску:</strong> ~$77K (3.15M₴)<br>
+                        <strong>Залучення 1,000 клієнтів:</strong> 1,000 × 500₴ = 500K₴<br>
+                        <strong>Всього витрат:</strong> 3.65M₴<br>
+                        <strong>Дохід:</strong> 1,000 × ₴18,000 = ₴18M<br>
+                        <strong>Прибуток:</strong> ₴14.35M<br>
+                        <strong style="color: #4ADE80; font-size: 18px;">ROI: ~393%</strong><br>
+                        <span style="font-size:13px;color:#A8A29E;">Окупність: 3–4 місяці після запуску</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== SECTION 8: ПАРТНЕРСТВО ===== -->
+    <section>
+        <div class="section-number">08</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Структура партнерства</h1>
+                <p class="section-subtitle">Хто що робить і що отримує</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 64px;">
+                <!-- KDB Group -->
+                <div class="revenue-card" style="background-color: #1A1D27; border: 1px solid rgba(245, 166, 35, 0.3);">
+                    <div style="font-size: 28px; font-weight: 600; color: #F5A623; margin-bottom: 32px;">KDB Group — 50%</div>
+                    <div style="font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; color: #F5A623; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 16px;">Повний екзекʼюшен + нематеріальний капітал</div>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #F5A623;">✓</span>
+                            Стратегія, продуктовий менеджмент, бізнес-аналітика
+                        </li>
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #F5A623;">✓</span>
+                            Повна розробка платформи (MVP → масштабування)
+                        </li>
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #F5A623;">✓</span>
+                            Маркетинг та залучення (стратегія + виконання)
+                        </li>
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #F5A623;">✓</span>
+                            Продакшн контенту, зйомки, монтаж
+                        </li>
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #F5A623;">✓</span>
+                            Покриття частини бюджету на розробку та зарплати команді
+                        </li>
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #F5A623;">✓</span>
+                            Управління проектом, підрядниками, аналітика
+                        </li>
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #F5A623;">✓</span>
+                            Експертиза: 50+ запущених продуктів, $200M+ згенерованого доходу
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Antares -->
+                <div class="revenue-card" style="background-color: #1A1D27; border: 1px solid rgba(245, 166, 35, 0.3);">
+                    <div style="font-size: 28px; font-weight: 600; color: #10B981; margin-bottom: 32px;">Антарес — 50%</div>
+                    <div style="font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; color: #4ADE80; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 16px;">Фінансування + експертиза</div>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #4ADE80;">✓</span>
+                            Фінансування проекту (бюджет на розробку, маркетинг, продакшн)
+                        </li>
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #4ADE80;">✓</span>
+                            База знань: тести ПДР, навчальні матеріали для оцифровки
+                        </li>
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #4ADE80;">✓</span>
+                            База контактів для розсилки при запуску (~17,000+ студентів)
+                        </li>
+                        <li style="font-size: 14px; color: #A8A29E; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #4ADE80;">✓</span>
+                            Експертиза в індустрії водійської освіти
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- removed per feedback -->
+        </div>
+    </section>
+
+    <!-- ===== SECTION 9: РИЗИКИ ТА МІТИГАЦІЯ ===== -->
+    <section>
+        <div class="section-number">09</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Ризики</h1>
+                <p class="section-subtitle">Що може піти не так і як ми з цим працюємо</p>
+            </div>
+
+            <div style="overflow-x: auto; margin-top: 64px;">
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 48px;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid rgba(245, 166, 35, 0.3);">
+                            <th style="text-align: left; padding: 16px 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; color: #F5A623; font-family: 'DM Mono';">Ризик</th>
+                            <th style="text-align: center; padding: 16px 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; color: #F5A623; font-family: 'DM Mono';">Ймовірність</th>
+                            <th style="text-align: center; padding: 16px 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; color: #F5A623; font-family: 'DM Mono';">Вплив</th>
+                            <th style="text-align: left; padding: 16px 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; color: #F5A623; font-family: 'DM Mono';">Як працюємо</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(245, 166, 35, 0.15);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">Низька конверсія платформи</td>
+                            <td style="text-align: center; padding: 16px 12px; font-size: 13px; color: #4ADE80;">Низька</td>
+                            <td style="text-align: center; padding: 16px 12px; font-size: 13px; color: #FFC947;">Середній</td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">Тестуємо попит ДО повної розробки через лендінг. Коригуємо підхід ітераційно на основі даних, а не припущень</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(245, 166, 35, 0.15);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">Затримка розробки MVP</td>
+                            <td style="text-align: center; padding: 16px 12px; font-size: 13px; color: #4ADE80;">Низька</td>
+                            <td style="text-align: center; padding: 16px 12px; font-size: 13px; color: #FFC947;">Середній</td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">In-house команда KDB з досвідом запуску 50+ продуктів. Паралельна робота: навіть при затримці — аудиторія та комʼюніті ростуть</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(245, 166, 35, 0.15);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">Контент не резонує з аудиторією</td>
+                            <td style="text-align: center; padding: 16px 12px; font-size: 13px; color: #4ADE80;">Низька</td>
+                            <td style="text-align: center; padding: 16px 12px; font-size: 13px; color: #FFC947;">Середній</td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">Бета-тестування з комʼюніті до запуску. Збираємо фідбек і адаптуємо. Контент від реальних інструкторів Антарес = автентичність</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 16px 12px; font-size: 14px; color: #F0EDE8;">Конкурент виходить на ринок</td>
+                            <td style="text-align: center; padding: 16px 12px; font-size: 13px; color: #4ADE80;">Низька</td>
+                            <td style="text-align: center; padding: 16px 12px; font-size: 13px; color: #FFC947;">Середній</td>
+                            <td style="padding: 16px 12px; font-size: 13px; color: #A8A29E;">Технологічна перевага + партнерство з найбільшою мережею автошкіл + команда з досвідом запуску продуктів на $200M+. Скопіювати цю комбінацію — нереально</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Key Quote -->
+            <div style="background-color: rgba(245, 166, 35, 0.08); border-left: 4px solid #F5A623; padding: 32px; border-radius: 8px; margin-top: 32px; font-size: 15px; color: #F0EDE8; line-height: 1.8;">
+                <strong style="color: #F5A623; display: block; margin-bottom: 12px;">Чому це не схоже на попередніх IT-підрядників:</strong>
+                "Перші цифри з ринку — через 30 днів. Не обіцянки, а дані: скільки коштує залучення, яка реакція аудиторії, що працює і що ні. Всі рішення базуються на метриках, не на презентаціях."
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 10: MILESTONES ===== -->
+    <section>
+        <div class="section-number">10</div>
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title">Як ми працюємо</h1>
+                <p class="section-subtitle">Ітераційний підхід: тестуємо, вимірюємо, коригуємо</p>
+            </div>
+
+            <!-- Iterative Approach -->
+            <div style="background:#1A1D27;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px;margin-top:64px;margin-bottom:48px;">
+                <div style="font-size:16px;color:#F0EDE8;line-height:1.8;">Ми не працюємо за принципом "зробили — здали — чекаємо". Ми рухаємось ітераційно: запускаємо, вимірюємо, коригуємо. Тестуємо гіпотези ще до запуску додатку — через лендінг, комʼюніті та рекламу. На основі реальних цифр (не припущень) коригуємо стратегію. Кожні 2-4 тижні — зріз результатів та рішення: продовжити, змінити підхід або масштабувати те що працює.</div>
+            </div>
+
+            <!-- Checkpoints -->
+            <div class="journey-timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-steps">
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle" style="background: linear-gradient(135deg, #F5A623, #FFC947);">5</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Зріз 1: перші дані з ринку</div>
+                            <div class="step-description" style="margin-bottom: 16px;">Тиждень 5 — кінець фази підготовки</div>
+                            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #F5A623;">◆</span>Лендінг працює, перший трафік закуплено</li>
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #F5A623;">◆</span>TG-канал запущено, контент іде</li>
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #F5A623;">◆</span>Визначена реальна вартість залучення (CPL)</li>
+                            </ul>
+                            <div style="font-size: 12px; color: #4ADE80; font-weight: 600;">Зріз: дані по CPL та першій реакції ринку → коригуємо зв'язки</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle" style="background: linear-gradient(135deg, #F5A623, #FFC947);">13</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Зріз 2: продукт + аудиторія + контент</div>
+                            <div class="step-description" style="margin-bottom: 16px;">Тиждень 13 — кінець фази розробки</div>
+                            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #F5A623;">◆</span>MVP в розробці, перші модулі готові</li>
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #F5A623;">◆</span>Зйомка контенту йде паралельно</li>
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #F5A623;">◆</span>Кращі маркетинг-зв'язки визначені і масштабуються</li>
+                            </ul>
+                            <div style="font-size: 12px; color: #4ADE80; font-weight: 600;">Зріз: кожні 2 тижні — метрики по аудиторії, вартості, конверсії лендінгу</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle" style="background: linear-gradient(135deg, #F5A623, #FFC947);">18</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Зріз 3: готовність до запуску</div>
+                            <div class="step-description" style="margin-bottom: 16px;">Тиждень 18 — рішення про дату лончу</div>
+                            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #F5A623;">◆</span>Контент інтегровано в платформу</li>
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #F5A623;">◆</span>Бета-тест з реальними юзерами з комʼюніті</li>
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #F5A623;">◆</span>Збір відгуків, виправлення, полірування</li>
+                            </ul>
+                            <div style="font-size: 12px; color: #4ADE80; font-weight: 600;">Зріз: готовність продукту + розмір аудиторії → рішення про дату запуску</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-node">
+                            <div class="step-circle" style="background: linear-gradient(135deg, #4ADE80, #10B981);">18+</div>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">Запуск та перші клієнти</div>
+                            <div class="step-description" style="margin-bottom: 16px;">Після тижня 18 — лонч + перший місяць</div>
+                            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;">
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #4ADE80;">◆</span>Розсилка по базі Антарес + всі канали</li>
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #4ADE80;">◆</span>Перші платящі клієнти</li>
+                                <li style="font-size: 13px; color: #A8A29E; padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: #4ADE80;">◆</span>Визначення бюджету на масштабування маркетингу</li>
+                            </ul>
+                            <div style="font-size: 12px; color: #4ADE80; font-weight: 600;">Зріз: реєстрації, конверсія в оплату, retention → рішення про масштабування</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div style="margin-top: 80px;">
+                <div style="font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #F0EDE8; margin-bottom: 32px;">Наступні кроки (після узгодження)</div>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: flex-start;">
+                        <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #F5A623, #FFC947); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; color: #0F1117; flex-shrink: 0;">1</div>
+                        <div style="padding-top: 4px;">
+                            <div style="font-size: 16px; font-weight: 600; color: #F0EDE8; margin-bottom: 4px;">Узгодження умов партнерства та підписання</div>
+                            <div style="font-size: 13px; color: #A8A29E;">Формалізація ролей, відповідальностей та часових меж</div>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: flex-start;">
+                        <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #F5A623, #FFC947); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; color: #0F1117; flex-shrink: 0;">2</div>
+                        <div style="padding-top: 4px;">
+                            <div style="font-size: 16px; font-weight: 600; color: #F0EDE8; margin-bottom: 4px;">Kick-off: передача бази тестів та матеріалів від Антарес</div>
+                            <div style="font-size: 13px; color: #A8A29E;">Отримання доступу до всіх знань і контактів</div>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: flex-start;">
+                        <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #F5A623, #FFC947); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; color: #0F1117; flex-shrink: 0;">3</div>
+                        <div style="padding-top: 4px;">
+                            <div style="font-size: 16px; font-weight: 600; color: #F0EDE8; margin-bottom: 4px;">Запуск TG-каналу та лендінгу (тиждень 1)</div>
+                            <div style="font-size: 13px; color: #A8A29E;">Початок комунікації та тестування попиту на ринку</div>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: flex-start;">
+                        <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #F5A623, #FFC947); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; color: #0F1117; flex-shrink: 0;">4</div>
+                        <div style="padding-top: 4px;">
+                            <div style="font-size: 16px; font-weight: 600; color: #F0EDE8; margin-bottom: 4px;">Старт розробки MVP та підготовка до зйомок (тиждень 2)</div>
+                            <div style="font-size: 13px; color: #A8A29E;">Паралельна розробка та контент-продакшн</div>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: flex-start;">
+                        <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #F5A623, #FFC947); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; color: #0F1117; flex-shrink: 0;">5</div>
+                        <div style="padding-top: 4px;">
+                            <div style="font-size: 16px; font-weight: 600; color: #F0EDE8; margin-bottom: 4px;">Перший checkpoint через 4 тижні</div>
+                            <div style="font-size: 13px; color: #A8A29E;">Оцінка метрик та прийняття рішення (продовжити / коригувати / зупинити)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p>KDB Group × Antares | Стратегічний план проекту | 2026</p>
+        </div>
+    </footer>
+
+    <!-- ===== SCROLL ANIMATIONS ===== -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll behavior
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
